@@ -1,0 +1,26 @@
+name: Deploy to Github pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  pages: write
+  id-token: write
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: "./.node-version"
+      - run: npx run tsc
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+
+      - uses: actions/deploy-pages@v4
