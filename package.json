@@ -2,7 +2,8 @@
   "name": "23_wards",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "./dist/main.ts",
+  "homepage": "https://pankun-coder.github.io/tokyoWards/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
