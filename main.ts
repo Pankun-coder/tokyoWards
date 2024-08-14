@@ -75,13 +75,12 @@ const markAsDone = (id: WardId) => {
   done.push(id);
 };
 
-const buttonElement = document.getElementById("button") as
-  | HTMLButtonElement
-  | undefined;
-if (!buttonElement) {
-  throw new Error("Button not founc");
+const form = document.getElementById("form") as HTMLFormElement | undefined;
+if (!form) {
+  throw new Error("no form");
 }
-buttonElement.addEventListener("click", () => {
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
   const inputElement = document.getElementById("input") as
     | HTMLInputElement
     | undefined;
