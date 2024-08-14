@@ -35,13 +35,12 @@ for (const ward in wardIdToName) {
     console.error(ward);
     throw new Error("Ward not found");
   }
-
   element.addEventListener("click", () => {
+    if (currentWard) {
+      unselectWard(currentWard);
+    }
     selectWard(ward as WardId);
   });
-  // element.addEventListener("blur", () => {
-  //   unselectWard(ward as WardId);
-  // });
 }
 
 const getWard = (id: string) => {
