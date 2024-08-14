@@ -22,7 +22,7 @@ const wardIdToName = {
   sumida: "墨田",
   taito: "台東",
   toshima: "豊島",
-};
+} as const;
 
 type WardId = keyof typeof wardIdToName;
 // States
@@ -89,12 +89,12 @@ buttonElement.addEventListener("click", () => {
     throw new Error("Input not found");
   }
   const userInput = inputElement.value;
-  console.log("inner text", userInput);
   if (currentWard && isMatch(wardIdToName[currentWard], userInput)) {
     inputElement.value = "";
     markAsDone(currentWard);
     console.log("sesikai");
     AlertIfComplete();
+    selectRandomWard();
   } else {
     console.log("hazure");
   }
@@ -107,6 +107,15 @@ const AlertIfComplete = () => {
   if (done.length === 23) {
     alert("クリア！");
   }
+};
+
+const selectRandomWard = () => {
+  const wardIds = (
+    Object.keys(wardIdToName) as Array<keyof typeof wardIdToName>
+  ).filter((id) => !done.includes(id));
+  const length = wardIds.length;
+  const randomId = wardIds[Math.floor(Math.random() * length)];
+  selectWard(randomId);
 };
 
 // TODO: 名前の表示はできたらsvgの上がいいけど、難しそうなので別の枠にリストみたいに並べて行ってもいいかも
