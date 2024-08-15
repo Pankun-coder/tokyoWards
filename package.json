@@ -5,7 +5,7 @@
   "main": "./dist/main.ts",
   "homepage": "https://pankun-coder.github.io/tokyoWards/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "dev": "vite",
     "build": "tsc --noEmit && vite build"
   },

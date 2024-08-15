@@ -3,7 +3,7 @@ const SEC = MIL_SEC * 1000;
 const MINUTE = SEC * 60;
 const HOUR = MINUTE * 60;
 
-const serializeTime = (from: Date, to: Date) => {
+export const serializeTime = (from: Date, to: Date) => {
   const diff = to.getTime() - from.getTime();
   const hours = Math.floor(diff / HOUR);
   const minutes = Math.floor((diff - HOUR * hours) / MINUTE);
