@@ -1,10 +1,14 @@
 import { WardId, wardIdToName } from "./constants";
 
 import Game from "./game";
+import Timer from "./timer";
 
 const game = new Game();
+const timer = new Timer();
 
 let currentWard: undefined | WardId;
+
+timer.start();
 
 const getWard = (id: WardId) => {
   const res = document.getElementById(id);
@@ -60,6 +64,7 @@ form.addEventListener("submit", (event: SubmitEvent) => {
     console.log("sesikai");
     if (game.hasCompleted()) {
       alert("clear!");
+      timer.stop();
       return;
     }
     const newWardId = game.getNotDoneWardRandomly();
@@ -68,5 +73,14 @@ form.addEventListener("submit", (event: SubmitEvent) => {
     console.log("hazure");
   }
 });
+
+const timerDisplay = document.getElementById("timer-display");
+if (!timerDisplay) {
+  throw new Error("timer not found");
+}
+
+setInterval(() => {
+  timerDisplay.innerText = timer.getSerializedTime();
+}, 10);
 
 // TODO: 名前の表示はできたらsvgの上がいいけど、難しそうなので別の枠にリストみたいに並べて行ってもいいかも
