@@ -1,0 +1,27 @@
+export const wardIdToName = {
+  adachi: "足立",
+  arakawa: "荒川",
+  bunkyo: "文京",
+  chiyoda: "千代田",
+  chuo: "中央",
+  edogawa: "江戸川",
+  itabashi: "板橋",
+  katsushika: "葛飾",
+  kita: "北",
+  koto: "江東",
+  meguro: "目黒",
+  minato: "港",
+  nakano: "中野",
+  nerima: "練馬",
+  ota: "大田",
+  setagaya: "世田谷",
+  shibuya: "渋谷",
+  shinagawa: "品川",
+  shinjuku: "新宿",
+  suginami: "杉並",
+  sumida: "墨田",
+  taito: "台東",
+  toshima: "豊島",
+} as const;
+
+export type WardId = keyof typeof wardIdToName;
