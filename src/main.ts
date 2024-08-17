@@ -8,8 +8,6 @@ const timer = new Timer();
 
 let currentWard: undefined | WardId;
 
-timer.start();
-
 const getWard = (id: WardId) => {
   const res = document.getElementById(id);
   if (!res) {
@@ -82,5 +80,7 @@ if (!timerDisplay) {
 setInterval(() => {
   timerDisplay.innerText = timer.getSerializedTime();
 }, 10);
+
+timer.start();
 
 // TODO: 名前の表示はできたらsvgの上がいいけど、難しそうなので別の枠にリストみたいに並べて行ってもいいかも
