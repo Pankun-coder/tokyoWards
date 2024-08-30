@@ -2,6 +2,7 @@ import { WardId, wardIdToName } from "./constants";
 
 import Game from "./game";
 import Timer from "./timer";
+import { generateTwitterUrl, generateTwitterUrlWithTime } from "./share";
 
 const COUNT_DOWN_SEC = 3;
 
@@ -51,6 +52,11 @@ if (!inputElement) {
   throw new Error("Input not found");
 }
 
+const shareButton = document.getElementById("twitter-share-button");
+if (!shareButton) {
+  throw new Error("");
+}
+
 form.addEventListener("submit", (event: SubmitEvent) => {
   event.preventDefault();
 
@@ -88,6 +94,16 @@ const infoText = document.getElementById("infoText");
 if (!infoText) {
   throw new Error("infoText not found");
 }
+
+shareButton.addEventListener("click", () => {
+  if (game.hasCompleted()) {
+    const url = generateTwitterUrlWithTime(timer.getSerializedTime());
+    window.open(url);
+  } else {
+    const url = generateTwitterUrl();
+    window.open(url);
+  }
+});
 
 setInterval(() => {
   timerDisplay.innerText = timer.getSerializedTime();
